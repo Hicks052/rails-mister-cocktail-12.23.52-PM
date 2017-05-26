@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h1><%= @cocktail.name %></h1>
+      <%= link_to 'Back', cocktails_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <ul>
+        <% if @cocktail.doses.empty? %>
+          <li>No ingredients yet!</li>
+        <% else %>
+          <% @cocktail.doses.each do |dose| %>
+            <li><%= dose.description %> of <%= dose.ingredient.name %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-xs-4">
+      <h2>Add a new dose</h2>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :description %>
+        <%= f.association :ingredient %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<h1>Dose</h1>
+<%= form_for [@cocktail, @dose] do |f| %>
+  <%= f.label :cocktail, "Cocktail Name" %>
+  <%= f.text_field :coktail %>
+  <%= f.label :ingredient, "Ingredient" %>
+  <%= f.text__field :ingredient %>
+  <%= f.label :dose %>
+  <%= f.number_field :dose %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
