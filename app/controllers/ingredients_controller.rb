@@ -1,15 +1,12 @@
 class IngredientsController < ApplicationController
-before_action :set_ingredient, only: [:new, :create]
-
   def new
     @ingredient = Ingredient.new
   end
 
   def create
-    @review = Ingredient.new(ingredient_params)
-    @ingredient.cocktail = @cocktail
+    @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
-      redirect_to cocktail_path(@cocktail)
+      redirect_to root_path
     else
       render :new
     end
@@ -17,12 +14,8 @@ before_action :set_ingredient, only: [:new, :create]
 
   private
 
-  def set_ingredient
-    @cocktail = Cocktail.find(params[:cocktail_id])
-  end
-
   def ingredient_params
-    params.require(:ingredient).permit(:cocktail, :dose)
+    params.require(:ingredient).permit(:name)
   end
 
 end
