@@ -23,7 +23,10 @@
       <%= simple_form_for [@cocktail, @dose] do |f| %>
         <%= f.input :description %>
         <%= f.association :ingredient %>
-        <%= f.submit class: 'btn btn-primary' %>
+        <%= link_to "Didn't find the correct ingredient?", new_ingredient_path %>
+        <div>
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
       <% end %>
     </div>
   </div>
